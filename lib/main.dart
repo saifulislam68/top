@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:login/screens/DetailPages/top_news.dart';
-import 'package:login/screens/HomePages/home_screen.dart';
+import 'package:login/splash_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,9 +11,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.indigo,
       ),
-      home: HomeScreen(),
+      home: const SplashScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

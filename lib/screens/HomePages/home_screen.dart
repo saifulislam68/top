@@ -8,7 +8,7 @@ import 'package:chips_choice_null_safety/chips_choice_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:login/SearchScreens/search.dart';
-import 'package:login/screens/HomePages/app_drawer.dart';
+import 'package:login/app_drawer.dart';
 import 'package:login/screens/HomePages/online_vote.dart';
 import 'package:login/screens/HomePages/opinion_page.dart';
 import 'package:login/screens/HomePages/popular_page.dart';
@@ -119,7 +119,7 @@ class _HomePageState extends State<HomeScreen> {
     'https://i.ytimg.com/vi/H4UHpJMd5qo/maxresdefault.jpg'
   ];
   // single choice value
-  int tag = 1;
+  int tag = 0;
 
   // list of string options
   List<String> options = [
@@ -151,15 +151,6 @@ class _HomePageState extends State<HomeScreen> {
             width: 107,
             height: 22,
           )),
-          // leading: IconButton(
-          //   icon: const Icon(
-          //     Icons.menu,
-          //     color: Colors.black,
-          //   ),
-          //   onPressed: () {
-          //     Scaffold.of(context).A();
-          //   },
-          // ),
           actions: [
             IconButton(
                 onPressed: () {
@@ -174,13 +165,6 @@ class _HomePageState extends State<HomeScreen> {
               child: Image.asset('assets/images/Vector (4).png'),
               onTap: () {},
             )
-            // IconButton(
-            //   onPressed: () {},
-            //   icon: const Icon(
-            //     Icons.notifications,
-            //     color: Color(0xff717272),
-            //   ),
-            // ),
           ],
         ),
         drawer: AppDrawer(),

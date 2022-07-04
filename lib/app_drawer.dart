@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:login/screens/sign_in.dart';
+import 'package:login/screens/sign_up.dart';
 import 'package:login/screens/DetailPages/top_news.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -47,12 +49,19 @@ class AppDrawer extends StatelessWidget {
           Divider(),
           ListTile(
             leading: Icon(Icons.exit_to_app),
-            title: Text('Logout'),
+            title: Text('Sign Up'),
             onTap: () {
-              // Navigator.of(context).pop();
-              // // Navigator.of(context)
-              // //     .pushReplacementNamed(UserProductsScreen.routeName);
-              // Provider.of<Auth>(context, listen: false).logout();
+              Navigator.push(
+                  context, MaterialPageRoute(builder: ((context) => SignUp())));
+            },
+          ),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.login),
+            title: Text('Sign In'),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: ((context) => LoginPage())));
             },
           ),
         ],
