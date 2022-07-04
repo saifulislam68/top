@@ -1,4 +1,4 @@
-import 'package:login/screens/home_screen.dart';
+import 'package:login/screens/HomePages/home_screen.dart';
 
 final List<News> posts = [
   News(

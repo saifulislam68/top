@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class OpinionPage extends StatelessWidget {
   const OpinionPage({Key? key}) : super(key: key);
@@ -19,32 +20,33 @@ class OpinionPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'padma',
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                    ),
-                    const Text(
-                      'Lorem Ipsum is simply dummy text of the printing Lorem Ipsum is simply dummy text of the printing and typesetting industry when an unknown ...',
-                      style: TextStyle(fontSize: 13),
-                    ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const [
-                          Text(
-                            'By Ryan Browne',
-                            style: TextStyle(
-                                fontSize: 12, color: Color(0xff717171)),
-                          ),
-                          Text(
-                            ' 10 min ago',
-                            style: TextStyle(
-                                fontSize: 12, color: Color(0xff717171)),
-                          ),
-                        ],
+                      padding: const EdgeInsets.only(bottom: 10.0),
+                      child: Text(
+                        'Padma Bridge resolves an incompleteness of a nation state.',
+                        style: GoogleFonts.lora(
+                            fontWeight: FontWeight.bold, fontSize: 16),
                       ),
+                    ),
+                    Text(
+                      'Lorem Ipsum is simply dummy text of the printing ',
+                      style: GoogleFonts.lora(fontSize: 13),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'By Ryan Browne',
+                          style: GoogleFonts.lora(fontSize: 12),
+                        ),
+                        Text(
+                          ' 10 min ago',
+                          style: GoogleFonts.lora(fontSize: 12),
+                        ),
+                      ],
                     )
                   ],
                 ),

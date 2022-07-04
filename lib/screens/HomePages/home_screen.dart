@@ -6,8 +6,9 @@
 
 import 'package:chips_choice_null_safety/chips_choice_null_safety.dart';
 import 'package:flutter/material.dart';
-import 'package:login/dummy.dart';
-import 'package:login/models/dumm_data.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:login/SearchScreens/search.dart';
+import 'package:login/screens/HomePages/app_drawer.dart';
 import 'package:login/screens/HomePages/online_vote.dart';
 import 'package:login/screens/HomePages/opinion_page.dart';
 import 'package:login/screens/HomePages/popular_page.dart';
@@ -78,9 +79,34 @@ class _HomePageState extends State<HomeScreen> {
       child: Card(
         child: Wrap(
           children: [
-            Image.asset(imageVal),
+            Stack(clipBehavior: Clip.none, children: [
+              Image.asset(
+                imageVal,
+                width: 180,
+                fit: BoxFit.cover,
+              ),
+              Positioned(
+                bottom: 30,
+                left: -5,
+                right: 0,
+                child: Center(
+                  child: Image.asset('assets/images/Vector(5).png'),
+                ),
+              ),
+              Positioned(
+                bottom: 37,
+                left: 0,
+                right: 0,
+                child: Center(
+                  child: Image.asset('assets/images/playbutton.png'),
+                ),
+              ),
+            ]),
             ListTile(
-              title: Text(heading),
+              title: Text(
+                heading,
+                style: GoogleFonts.nunito(fontSize: 14),
+              ),
             ),
           ],
         ),
@@ -115,22 +141,31 @@ class _HomePageState extends State<HomeScreen> {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
+          iconTheme: const IconThemeData(
+            size: 30,
+            color: Color(0xff717272),
+          ),
           title: Center(
               child: Image.asset(
             'assets/images/newslogo.png',
             width: 107,
             height: 22,
           )),
-          leading: IconButton(
-            icon: const Icon(
-              Icons.menu,
-              color: Colors.black,
-            ),
-            onPressed: () {},
-          ),
+          // leading: IconButton(
+          //   icon: const Icon(
+          //     Icons.menu,
+          //     color: Colors.black,
+          //   ),
+          //   onPressed: () {
+          //     Scaffold.of(context).A();
+          //   },
+          // ),
           actions: [
             IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: ((context) => Search())));
+                },
                 icon: const Icon(
                   Icons.search,
                   color: Color(0xff717272),
@@ -148,25 +183,12 @@ class _HomePageState extends State<HomeScreen> {
             // ),
           ],
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: SingleChildScrollView(
+        drawer: AppDrawer(),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
             child: Column(
               children: [
-                // Row(
-                //   children: [
-                //     Padding(
-                //       padding: const EdgeInsets.all(8.0),
-                //       child: Image.asset('assets/images/smallLogo.png'),
-                //     ),
-                //     const Expanded(child: CupertinoSearchTextField()),
-                //     IconButton(
-                //         onPressed: () {},
-                //         icon: const Icon(
-                //           Icons.notifications,
-                //         ))
-                //   ],
-                // ),
                 ChipsChoice<int>.single(
                   value: tag,
                   onChanged: (val) => setState(() => tag = val),
@@ -208,8 +230,11 @@ class _HomePageState extends State<HomeScreen> {
                     ),
                   ],
                 ),
+                const SizedBox(
+                  height: 15,
+                ),
                 SizedBox(
-                  height: 250,
+                  height: 300,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: 4,
@@ -220,16 +245,30 @@ class _HomePageState extends State<HomeScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Image.network(
-                                "https://i.ytimg.com/vi/KHOzgacfSPE/maxresdefault.jpg",
-                                height: 150,
-                                fit: BoxFit.cover,
+                              padding: const EdgeInsets.only(left: 15.0),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(7),
+                                child: Image.asset(
+                                  "assets/images/padma.png",
+                                  height: 185,
+                                  width: 260,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
-                            const Padding(
-                              padding: EdgeInsets.symmetric(vertical: 8),
-                              child: Text("Memorable celebration planded ."),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 15.0, top: 12),
+                              child: Text(
+                                "Memorable celebration planned for padma bridge inauguration.",
+                                style: GoogleFonts.lora(
+                                    fontSize: 16,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 10,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -237,7 +276,7 @@ class _HomePageState extends State<HomeScreen> {
                                 Container(
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
-                                    color: Colors.amber,
+                                    color: Color(0xffF4F0FF),
                                   ),
                                   child: const Padding(
                                     padding: EdgeInsets.symmetric(
@@ -253,20 +292,11 @@ class _HomePageState extends State<HomeScreen> {
                                   ),
                                 ),
                                 Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.amber,
-                                  ),
-                                  child: const Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        vertical: 5.0, horizontal: 12),
-                                    child: Text(
-                                      "Business",
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.bold,
-                                        color: Color(0xff7F58FE),
-                                      ),
+                                  child: const Text(
+                                    "By Ryan Browne . 26 june 2022",
+                                    style: TextStyle(
+                                      fontSize: 11,
+                                      color: Color(0xff717171),
                                     ),
                                   ),
                                 ),
@@ -278,75 +308,96 @@ class _HomePageState extends State<HomeScreen> {
                     },
                   ),
                 ),
+                const SizedBox(
+                  height: 15,
+                ),
                 SizedBox(
                   height: 250,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: 4,
                     itemBuilder: (context, index) {
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Image.network(
-                              "https://i.ytimg.com/vi/KHOzgacfSPE/maxresdefault.jpg",
-                              height: 150,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 8),
-                            child: Text("Memorable celebration planded ."),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Color(0xffF4F0FF),
-                            ),
-                            child: const Padding(
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 5.0, horizontal: 12),
-                            ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: Color(0xffF4F0FF),
+                      return SizedBox(
+                        width: 250,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 15.0),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(7),
+                                child: Image.asset(
+                                  "assets/images/padma.png",
+                                  height: 141,
+                                  width: 230,
+                                  fit: BoxFit.cover,
                                 ),
-                                child: const Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      vertical: 5.0, horizontal: 12),
-                                  child: Text(
-                                    "Crypto",
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold,
-                                      color: Color(0xff7F58FE),
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 15.0, top: 12),
+                              child: Text(
+                                "Memorable celebration planned for padma bridge inauguration.",
+                                style: GoogleFonts.lora(
+                                    fontSize: 16,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 8.0, top: 10),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Color(0xffF4F0FF),
+                                    ),
+                                    child: const Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          vertical: 5.0, horizontal: 12),
+                                      child: Text(
+                                        "Crypto",
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                          color: Color(0xff7F58FE),
+                                        ),
+                                      ),
                                     ),
                                   ),
-                                ),
+                                  Container(
+                                    child: const Text(
+                                      "26 june 2022",
+                                      style: TextStyle(
+                                        fontSize: 11,
+                                        color: Color(0xff717171),
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
-                              const Text(
-                                ' 30 june 2022',
-                                style: TextStyle(
-                                    fontSize: 12, color: Color(0xff717171)),
-                              ),
-                            ],
-                          ),
-                        ],
+                            ),
+                          ],
+                        ),
                       );
                     },
                   ),
                 ),
-                const DefaultTabController(
+                const SizedBox(
+                  height: 20,
+                ),
+                DefaultTabController(
                   length: 2,
                   child: TabBar(
                     labelColor: Colors.black,
-                    tabs: [
+                    labelStyle: GoogleFonts.lora(
+                        fontSize: 18, fontWeight: FontWeight.bold),
+                    tabs: const [
                       Tab(
                         text: 'Popular News',
                       ),
@@ -356,8 +407,14 @@ class _HomePageState extends State<HomeScreen> {
                     ],
                   ),
                 ),
+                const SizedBox(
+                  height: 10,
+                ),
                 const PopularPage(),
+                Divider(),
+
                 const PopularPage(),
+                Divider(),
                 const PopularPage(),
                 // ListView.builder(
                 //   shrinkWrap: true,
@@ -372,6 +429,10 @@ class _HomePageState extends State<HomeScreen> {
                 //     );
                 //   },
                 // ),
+
+                const SizedBox(
+                  height: 10,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: const [
@@ -385,53 +446,53 @@ class _HomePageState extends State<HomeScreen> {
                   ],
                 ),
                 Container(
-                  margin: const EdgeInsets.symmetric(vertical: 20),
+                  margin: const EdgeInsets.symmetric(vertical: 10),
                   height: 150,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     children: [
                       MyData1(
                         'assets/images/img2.png',
-                        'Memorable celebration .',
+                        'Padma Bridge benefits',
                       ),
                       MyData1(
                         'assets/images/img2.png',
-                        'Memorable celebration .',
+                        'Padma Bridge benefits',
                       ),
                       MyData1(
                         'assets/images/img2.png',
-                        'Memorable celebration .',
+                        'Padma Bridge benefits',
                       ),
                     ],
                   ),
                 ),
                 Container(
-                  margin: const EdgeInsets.symmetric(vertical: 20),
+                  // margin: const EdgeInsets.symmetric(vertical: 20),
                   height: 150,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     children: [
                       MyData1(
                         'assets/images/img2.png',
-                        'Memorable celebration .',
+                        'Padma Bridge benefits',
                       ),
                       MyData1(
                         'assets/images/img2.png',
-                        'Memorable celebration .',
+                        'Padma Bridge benefits',
                       ),
                       MyData1(
                         'assets/images/img2.png',
-                        'Memorable celebration .',
+                        'Padma Bridge benefits',
                       ),
                     ],
                   ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: const [
+                  children: [
                     Text(
                       'Online Vote',
-                      style: TextStyle(
+                      style: GoogleFonts.lora(
                           fontWeight: FontWeight.bold,
                           fontSize: 25,
                           color: Colors.black),
@@ -466,7 +527,9 @@ class _HomePageState extends State<HomeScreen> {
                   height: 10,
                 ),
                 const OpinionPage(),
+                Divider(),
                 const OpinionPage(),
+                Divider(),
                 const OpinionPage(),
               ],
             ),
