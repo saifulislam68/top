@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:login/screens/sign_in.dart';
-import 'package:login/screens/sign_up.dart';
+import 'package:login/screens/auth/sign_in.dart';
+import 'package:login/screens/auth/sign_up.dart';
 import 'package:login/screens/DetailPages/top_news.dart';
 
 class AppDrawer extends StatelessWidget {

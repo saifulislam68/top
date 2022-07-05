@@ -250,7 +250,10 @@ class _TopNewsState extends State<TopNews> {
                             TextStyle(fontSize: 10, color: Color(0xff717171)),
                       ),
                       Spacer(),
-                      Image.asset('assets/images/messagegroup.png'),
+                      CircularProgressIndicator(
+                        backgroundColor: Colors.amber,
+                      )
+                      // Image.asset('assets/images/messagegroup.png'),
                     ],
                   ),
                 ),

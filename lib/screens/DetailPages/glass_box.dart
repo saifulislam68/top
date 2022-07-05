@@ -16,13 +16,13 @@ class GlassBox extends StatelessWidget {
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              Colors.white.withOpacity(0.4),
-              Colors.white.withOpacity(0.10),
+              Colors.white.withOpacity(0.50),
+              Colors.white.withOpacity(0.50),
             ],
           ),
         ),
         height: 210,
-        width: 380,
+        width: 360,
         child: Column(
           children: [
             BackdropFilter(

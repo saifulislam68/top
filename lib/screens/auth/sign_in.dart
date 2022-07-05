@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:login/screens/forget_password.dart';
-import 'package:login/screens/sign_up.dart';
+import 'package:login/screens/auth/forget_password.dart';
+import 'package:login/screens/auth/sign_up.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -26,10 +26,15 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                SizedBox(
+                  height: 60,
+                ),
                 Container(
                   child: Image.asset(
-                    'assets/images/onest.png',
-                    fit: BoxFit.cover,
+                    'assets/images/newslogo.png',
+                    height: 40,
+                    width: 256,
+                    // fit: BoxFit.cover,
                   ),
                 ),
                 const SizedBox(
@@ -58,17 +63,17 @@ class _LoginPageState extends State<LoginPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.grey[100],
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(12),
+                      color: Colors.white,
+                      border: Border.all(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(30),
                     ),
                     child: const Padding(
                       padding: EdgeInsets.only(left: 20.0),
                       child: TextField(
                         decoration: InputDecoration(
                             border: InputBorder.none,
-                            icon: Icon(Icons.call),
-                            hintText: 'Phone'),
+                            icon: Icon(Icons.email_outlined),
+                            hintText: 'Email'),
                       ),
                     ),
                   ),
@@ -80,9 +85,9 @@ class _LoginPageState extends State<LoginPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.grey[100],
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(12),
+                      color: Colors.white,
+                      border: Border.all(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(30),
                     ),
                     child: const Padding(
                       padding: EdgeInsets.only(left: 20.0),
@@ -91,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
                         // ignore: unnecessary_const
                         decoration: const InputDecoration(
                             border: InputBorder.none,
-                            icon: Icon(Icons.lock),
+                            icon: Icon(Icons.lock_outline),
                             // suffixIcon: Icon(Icons.remove_red_eye),
                             hintText: 'Password'),
                       ),
@@ -127,20 +132,23 @@ class _LoginPageState extends State<LoginPage> {
                   height: 10,
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: Container(
-                    padding: const EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF7f58fe),
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Sign In',
-                        style: GoogleFonts.lora(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18),
+                  padding: const EdgeInsets.symmetric(horizontal: 40.0),
+                  child: InkWell(
+                    onTap: () {},
+                    child: Container(
+                      padding: const EdgeInsets.all(15),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF7F58FE),
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Sign In',
+                          style: GoogleFonts.lora(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18),
+                        ),
                       ),
                     ),
                   ),
