@@ -1,10 +1,8 @@
-import 'dart:ffi';
-import 'dart:ui';
-
+import 'package:chips_choice_null_safety/chips_choice_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:login/screens/DetailPages/comment.dart';
 import 'package:login/screens/DetailPages/glass_box.dart';
-import 'package:login/screens/HomePages/popular_page.dart';
 
 class TopNews extends StatefulWidget {
   const TopNews({Key? key}) : super(key: key);
@@ -14,13 +12,29 @@ class TopNews extends StatefulWidget {
 }
 
 class _TopNewsState extends State<TopNews> {
+  int tag = 0;
+
+  // list of string options
+  List<String> options = [
+    'News',
+    'Entertainment',
+    'Politics',
+    'Automotive',
+    'Sports',
+    'Education',
+    'Fashion',
+    'Travel',
+    'Food',
+    'Tech',
+    'Science',
+  ];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
           iconTheme: const IconThemeData(
-            size: 30,
+            size: 20,
             color: Color(0xff717272),
           ),
           backgroundColor: Colors.white,
@@ -50,17 +64,106 @@ class _TopNewsState extends State<TopNews> {
                   Icons.search,
                   color: Color(0xff717272),
                 )),
-            InkWell(
-              child: Image.asset('assets/images/Vector (4).png'),
-              onTap: () {},
-            )
-            // IconButton(
-            //   onPressed: () {},
-            //   icon: const Icon(
-            //     Icons.notifications,
-            //     color: Color(0xff717272),
-            //   ),
-            // ),
+            // InkWell(
+            //   child: Image.asset('assets/images/Vector (4).png'),
+            //   onTap: () {},
+            // )
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.bookmark_border,
+                color: Color(0xff717272),
+              ),
+            ),
+            IconButton(
+              onPressed: () {
+                showModalBottomSheet(
+                    shape: const RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.vertical(top: Radius.circular(30))),
+                    context: context,
+                    builder: (context) {
+                      return Padding(
+                        padding: const EdgeInsets.only(left: 20.0),
+                        child: Container(
+                          height: 260,
+                          child: Column(
+                            children: [
+                              const Icon(
+                                Icons.horizontal_rule,
+                                color: Colors.grey,
+                              ),
+                              Text(
+                                'Share',
+                                style: GoogleFonts.lora(
+                                    fontSize: 20, fontWeight: FontWeight.bold),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(12.0),
+                                child: Row(
+                                  children: [
+                                    Image.asset(
+                                      'assets/images/whatsapp-icon.png',
+                                      height: 80,
+                                    ),
+                                    Image.asset(
+                                      'assets/images/facebook.icon.png',
+                                      height: 80,
+                                    ),
+                                    Image.asset(
+                                      'assets/images/whatsapp-icon.png',
+                                      height: 80,
+                                    ),
+                                    Image.asset(
+                                      'assets/images/facebook.icon.png',
+                                      height: 80,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Center(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(12.0),
+                                  child: Row(
+                                    children: [
+                                      Image.asset(
+                                        'assets/images/whatsapp-icon.png',
+                                        height: 80,
+                                      ),
+                                      Image.asset(
+                                        'assets/images/facebook.icon.png',
+                                        height: 80,
+                                      ),
+                                      Image.asset(
+                                        'assets/images/whatsapp-icon.png',
+                                        height: 80,
+                                      ),
+                                      Image.asset(
+                                        'assets/images/facebook.icon.png',
+                                        height: 80,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      );
+                    });
+              },
+              icon: const Icon(
+                Icons.share_outlined,
+                color: Color(0xff717272),
+              ),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.more_vert,
+                color: Color(0xff717272),
+              ),
+            ),
           ],
         ),
         body: SingleChildScrollView(
@@ -192,6 +295,29 @@ class _TopNewsState extends State<TopNews> {
               const SizedBox(
                 height: 15,
               ),
+              Wrap(
+                children: [
+                  ChipsChoice<int>.single(
+                    value: tag,
+                    onChanged: (val) => setState(() => tag = val),
+                    choiceItems: C2Choice.listFrom<int, String>(
+                      source: options,
+                      value: (i, v) => i,
+                      label: (i, v) => v,
+                    ),
+                    choiceStyle: const C2ChoiceStyle(
+                        color: Color(0xffB1B1B1),
+                        borderColor: Color(0xffB1B1B1),
+                        backgroundColor: Color(0xffF9FAFB),
+                        showCheckmark: false),
+                    choiceActiveStyle: const C2ChoiceStyle(
+                        showCheckmark: false,
+                        backgroundColor: Color(0xFF7F58FE),
+                        color: Colors.white),
+                  )
+                ],
+              ),
+              Comment(),
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Container(
@@ -207,21 +333,6 @@ class _TopNewsState extends State<TopNews> {
                         style:
                             TextStyle(fontSize: 10, color: Color(0xff717171)),
                       ),
-                      // Padding(
-                      //   padding: const EdgeInsets.only(left: 20.0),
-                      //   child: Container(
-                      //     decoration: BoxDecoration(
-                      //       borderRadius: BorderRadius.circular(10),
-                      //       color: Color(0xf#FAFAFA),
-                      //     ),
-                      //     child: Row(
-                      //       children: [
-                      //         Image.asset('assets/images/Vector (1).png'),
-                      //         Text('252')
-                      //       ],
-                      //     ),
-                      //   ),
-                      // ),
                       Padding(
                         padding: const EdgeInsets.only(left: 20.0),
                         child: Image.asset('assets/images/Vector (1).png'),
@@ -250,10 +361,10 @@ class _TopNewsState extends State<TopNews> {
                             TextStyle(fontSize: 10, color: Color(0xff717171)),
                       ),
                       Spacer(),
-                      CircularProgressIndicator(
-                        backgroundColor: Colors.amber,
-                      )
-                      // Image.asset('assets/images/messagegroup.png'),
+                      // CircularProgressIndicator(
+                      //   backgroundColor: Colors.amber,
+                      // )
+                      Image.asset('assets/images/messagegroup.png'),
                     ],
                   ),
                 ),
@@ -261,69 +372,6 @@ class _TopNewsState extends State<TopNews> {
             ],
           ),
         ),
-
-        // child: Expanded(
-        //   child: Column(
-        //     children: [
-        //       Container(
-        //         height: 300,
-        //         width: double.infinity,
-        //         child: Image.network(
-        //           "https://i.ytimg.com/vi/KHOzgacfSPE/maxresdefault.jpg",
-        //           fit: BoxFit.cover,
-        //         ),
-        //       ),
-        //       SizedBox(
-        //         height: 20,
-        //       ),
-        //       Positioned(child: GlassBox()),
-        //       Container(
-        //         height: 400,
-        //         width: double.infinity,
-        //         child: Text(
-        //             'California - It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s.'),
-        //       ),
-        //     ],
-        //   ),
-        // ),
-
-        // child: Expanded(
-        //   child: Stack(
-        //     alignment: Alignment(-1, 1),
-        //     children: [
-        //       Positioned(
-        //         height: 500,
-        //         child: Image.network(
-        //             'https://i.ytimg.com/vi/KHOzgacfSPE/maxresdefault.jpg'),
-        //       ),
-        //       // Container(
-        //       //   decoration: const BoxDecoration(
-        //       //     image: DecorationImage(
-        //       //         image: NetworkImage(
-        //       //           'https://i.ytimg.com/vi/KHOzgacfSPE/maxresdefault.jpg',
-        //       //         ),
-        //       //         fit: BoxFit.cover),
-        //       //   ),
-        //       //   // alignment: Alignment(-1, 1),
-        //       //   // child: GlassBox(),
-        //       // ),
-        //       Positioned(
-        //         child: GlassBox(),
-        //       ),
-
-        //       // Stack(
-        //       //   alignment: Alignment(1, 1),
-        //       //   children: [
-        //       //     Container(
-        //       //       height: 300,
-        //       //       width: 300,
-        //       //       color: Colors.black,
-        //       //     )
-        //       //   ],
-        //       // )
-        //     ],
-        //   ),
-        // ),
       ),
     );
   }
