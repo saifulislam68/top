@@ -1,7 +1,7 @@
 import 'package:chips_choice_null_safety/chips_choice_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:login/screens/DetailPages/comment.dart';
+import 'package:login/screens/DetailPages/comment_popUp.dart';
 import 'package:login/screens/DetailPages/glass_box.dart';
 
 class TopNews extends StatefulWidget {
@@ -104,7 +104,7 @@ class _TopNewsState extends State<TopNews> {
                                   children: [
                                     Image.asset(
                                       'assets/images/whatsapp-icon.png',
-                                      height: 80,
+                                      height: 40,
                                     ),
                                     Image.asset(
                                       'assets/images/facebook.icon.png',
@@ -317,7 +317,7 @@ class _TopNewsState extends State<TopNews> {
                   )
                 ],
               ),
-              Comment(),
+              CommentPopUp(),
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Container(
